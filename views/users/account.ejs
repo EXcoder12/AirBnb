@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white py-3">
+          <h1 class="h4 mb-0">My Account</h1>
+          <p class="text-muted small mb-0 mt-1">
+            View and manage your personal information.
+          </p>
+        </div>
+
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-4">
+
+            <div class="ms-3 mt-2">
+              <h2 class="h5 mb-0"><%= currUser.username %></h2>
+            </div>
+          </div>
+
+          <div class="list-group list-group-flush">
+            <div
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <span class="text-muted">Username</span>
+              <strong class="text-dark"><%= currUser.username %></strong>
+            </div>
+            <div
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <span class="text-muted">Email Address</span>
+              <span class="text-dark">
+                <%= currUser.email %>
+                <span class="badge bg-success ms-2">Verified</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer bg-white py-3">
+          <div class="d-flex gap-2">
+            <a href="#" class="btn btn-primary disabled">
+              <i class="fa-solid fa-pencil me-1"></i> Edit Profile
+            </a>
+            <a href="#" class="btn btn-secondary disabled">
+              <i class="fa-solid fa-lock me-1"></i> Change Password
+            </a>
+            <a href="/logout" class="btn btn-outline-danger ms-auto">
+              <i class="fa-solid fa-right-from-bracket me-1"></i> Log Out
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

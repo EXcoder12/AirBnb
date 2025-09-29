@@ -1,0 +1,118 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row">
+  <div class="col-9 offset-2">
+    <h3 class="mt-4">Add new listing</h3>
+
+    <form
+      action="/listings"
+      method="post"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          name="listing[title]"
+          placeholder="Enter title"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Title can't be empty!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          type="text"
+          name="listing[description]"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">This field can't be empty!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input
+          type="file"
+          name="listing[image]"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <label for="input-group" class="form-label">Tag</label>
+      <div class="input-group mb-3">
+        <select
+          class="form-select"
+          id="inputGroupSelect02"
+          name="listing[category]"
+          type="text"
+          required
+        >
+          <option value="" disabled selected hidden>Choose...</option>
+          <option value="beach">Beach</option>
+          <option value="mountain">Mountain</option>
+          <option value="city">City</option>
+          <option value="countryside">Countryside</option>
+          <option value="island">Island</option>
+          <option value="desert">Desert</option>
+          <option value="snow">Snow</option>
+          <option value="lake">Lake</option>
+          <option value="forest">Forest</option>
+          <option value="swimming">Swimming</option>
+          <option value="castle">Castle</option>
+          <option value="iconic-sites">Iconic Sites</option>
+          <option value="rooms">Rooms</option>
+          <option value="camping">Camping</option>
+          <option value="farm">Farm</option>
+          <option value="other">Other</option>
+        </select>
+        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input
+          type="number"
+          name="listing[price]"
+          placeholder="Enter price"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">This field can't be empty!</div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-7">
+          <label for="location" class="form-label">Location</label>
+          <input
+            type="text"
+            name="listing[location]"
+            placeholder="Enter your location"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">This field can't be empty!</div>
+        </div>
+
+        <div class="mb-3 col-md-5">
+          <label for="country" class="form-label">Country</label>
+          <input
+            type="text"
+            name="listing[country]"
+            placeholder="Enter your country"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">This field can't be empty!</div>
+        </div>
+      </div>
+
+      <button class="btn mb-3 add-btn">Add List</button>
+    </form>
+  </div>
+</div>

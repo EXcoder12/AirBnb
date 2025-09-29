@@ -1,0 +1,93 @@
+<nav
+  class="navbar navbar-expand-md navbar-light bg-light border-bottom-dark sticky-top"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="/listings">
+      <i class="fa-solid fa-compass me-2 title"></i>Wanderlust
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavContent"
+      aria-controls="navbarNavContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavContent">
+
+      <div class="navbar-nav mx-auto">
+        <form
+          class="d-flex"
+          role="search"
+          action="/listings/search"
+          method="GET"
+        >
+          <div class="input-group">
+            <input
+              class="form-control search-input"
+              type="search"
+              name="q"
+              placeholder="Search destinations"
+              aria-label="Search destinations"
+            />
+            <button
+              class="btn search-btn"
+              type="submit"
+              aria-label="Submit search"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto align-items-center">
+        <a class="nav-link me-md-2" href="/listings/new">Become a host</a>
+
+        <% if(!currUser) { %>
+        <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+        <a class="btn btn-outline-dark btn-sm" href="/login" role="button"
+          >Log In</a
+        >
+        <% } else { %>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-circle-user me-1"></i>
+            <%= currUser.username %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="/users/bookings">
+                <i class="fa-solid fa-briefcase me-2"></i>My Bookings
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/users/account">
+                <i class="fa-solid fa-gear me-2"></i>Account Settings
+              </a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="/logout">
+                <i class="fa-solid fa-right-from-bracket me-2"></i>Log Out
+              </a>
+            </li>
+          </ul>
+        </li>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
