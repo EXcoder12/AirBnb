@@ -1,6 +1,4 @@
-<nav
-  class="navbar navbar-expand-md navbar-light bg-light border-bottom-dark sticky-top"
->
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold" href="/listings">
       <i class="fa-solid fa-compass me-2 title"></i>Wanderlust
@@ -9,51 +7,41 @@
     <button
       class="navbar-toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavContent"
-      aria-controls="navbarNavContent"
-      aria-expanded="false"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#navbarOffcanvas"
+      aria-controls="navbarOffcanvas"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavContent">
-
-      <div class="navbar-nav mx-auto">
-        <form
-          class="d-flex"
-          role="search"
-          action="/listings/search"
-          method="GET"
-        >
-          <div class="input-group">
-            <input
-              class="form-control search-input"
-              type="search"
-              name="q"
-              placeholder="Search destinations"
-              aria-label="Search destinations"
-            />
-            <button
-              class="btn search-btn"
-              type="submit"
-              aria-label="Submit search"
-            >
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="mx-auto">
+        <form class="d-flex" role="search" action="/listings/search" method="GET">
+          <input
+            class="form-control me-2 search-input"
+            type="search"
+            name="q"
+            placeholder="Search destinations"
+            aria-label="Search"
+          />
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </form>
       </div>
 
-      <div class="navbar-nav ms-auto align-items-center">
-        <a class="nav-link me-md-2" href="/listings/new">Become a host</a>
-
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">Become a host</a>
+        </li>
         <% if(!currUser) { %>
-        <a class="nav-link" href="/signup"><b>Sign Up</b></a>
-        <a class="btn btn-outline-dark btn-sm" href="/login" role="button"
-          >Log In</a
-        >
+        <li class="nav-item">
+          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-dark btn-sm" href="/login" role="button">Log In</a>
+        </li>
         <% } else { %>
         <li class="nav-item dropdown">
           <a
@@ -67,27 +55,62 @@
             <%= currUser.username %>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li>
-              <a class="dropdown-item" href="/users/bookings">
-                <i class="fa-solid fa-briefcase me-2"></i>My Bookings
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/users/account">
-                <i class="fa-solid fa-gear me-2"></i>Account Settings
-              </a>
-            </li>
+            <li><a class="dropdown-item" href="/users/bookings"><i class="fa-solid fa-briefcase me-2"></i>My Bookings</a></li>
+            <li><a class="dropdown-item" href="/users/account"><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" href="/logout">
-                <i class="fa-solid fa-right-from-bracket me-2"></i>Log Out
-              </a>
-            </li>
+            <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket me-2"></i>Log Out</a></li>
           </ul>
         </li>
         <% } %>
-      </div>
+      </ul>
     </div>
   </div>
 </nav>
 
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="navbarOffcanvas"
+  aria-labelledby="navbarOffcanvasLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+      <li class="nav-item my-2">
+        <a class="nav-link" href="/listings/new">Become a host</a>
+      </li>
+      <% if(!currUser) { %>
+      <li class="nav-item my-2">
+        <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+      </li>
+      <li class="nav-item my-2">
+        <a class="btn btn-outline-dark" href="/login" role="button">Log In</a>
+      </li>
+      <% } else { %>
+      <li class="nav-item my-2"><a class="dropdown-item" href="/users/bookings"><i class="fa-solid fa-briefcase me-2"></i>My Bookings</a></li>
+      <li class="nav-item my-2"><a class="dropdown-item" href="/users/account"><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
+      <li class="nav-item mt-3 pt-3 border-top">
+        <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket me-2"></i>Log Out</a>
+      </li>
+      <% } %>
+    </ul>
+    <form class="d-flex mt-3" role="search" action="/listings/search" method="GET">
+      <input
+        class="form-control me-2"
+        type="search"
+        name="q"
+        placeholder="Search..."
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</div>

@@ -5,13 +5,16 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
-  const { category } = req.query;
+  // Set a default value for category if it's not in the query
+  const category = req.query.category || "All"; 
+  
   let allListings;
-  if (category) {
+  if (category && category !== "All") {
     allListings = await Listing.find({ category });
   } else {
     allListings = await Listing.find({});
   }
+  
   res.render("listings/index.ejs", { allListings, category });
 };
 
@@ -109,3 +112,21 @@ module.exports.filter = async (req, res) => {
   res.render("listings/index.ejs", { listings, category });
 };
 
+module.exports.searchListings = async (req, res) => {
+  const { q } = req.query;
+  if (!q) {
+    req.flash("error", "Search query cannot be empty!");
+    return res.redirect("/listings");
+  }
+  
+  const allListings = await Listing.find({ 
+    title: { $regex: q, $options: "i" } 
+  });
+
+  if (allListings.length === 0) {
+    req.flash("error", "No listings found for your search.");
+    return res.redirect("/listings");
+  }
+
+  res.render("listings/index.ejs", {allListings, category: "All" });
+};
