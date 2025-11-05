@@ -20,11 +20,11 @@ A full-stack web application inspired by Airbnb, allowing users to discover, boo
 
 ## 💻 Tech Stack
 
-* **Frontend**: React.js, Tailwind CSS, Next.js *(<-- Replace with your actual frontend tech)*
-* **Backend**: Node.js, Express.js *(<-- Replace with your actual backend tech)*
-* **Database**: MongoDB, Mongoose *(<-- Replace with your actual database tech)*
-* **Authentication**: JSON Web Tokens (JWT) / NextAuth
-* **Deployment**: Vercel / Netlify / AWS *(<-- Replace with your hosting provider)*
+* **Frontend**: Javascript, EJS
+* **Backend**: Node.js, Express.js 
+* **Database**: MongoDB, Mongoose 
+* **Authentication**: JSON Web Tokens (JWT) 
+* **Deployment**: AWS Azure, Render
 
 ---
 
